@@ -1,21 +1,19 @@
 # This will be only shared file
 
-
 library(naniar)
 library(broom)
-library(survival)
 library(mice)
 library(smcfcs)
 library(jomo)
+library(survival)
 library(JointAI)
-#library(Hmisc) aregImpute
-#library(Amelia)
-# Latest bartlett reference based MI?
+library(coda)
+library(bayesplot)
 
 # Set contrasts for ordered factors
 options(contrasts = rep("contr.treatment", 2))
 
-set.seed(79879)
+set.seed(4986465)
 
 # https://academic.oup.com/aje/article/179/6/764/107562
 # https://bmcmedresmethodol.biomedcentral.com/articles/10.1186/1471-2288-10-112
@@ -27,9 +25,9 @@ dat <- fst::read_fst("data-raw/dat-mds_admin-cens.fst")
 # Visualisation -----------------------------------------------------------
 
 
-gg_miss_upset(dat)
-mice::md.pattern(x = dat, rotate.names = TRUE)
-naniar::vis_miss(x = dat)
+#naniar::gg_miss_upset(dat, nsets = 9)
+#mice::md.pattern(x = dat, rotate.names = TRUE)
+#naniar::vis_miss(x = dat)
 
 
 # Prepare imputations -----------------------------------------------------
@@ -43,6 +41,15 @@ predictors <- colnames(dat)[!(colnames(dat) %in% outcomes)]
 mod_formula <- reformulate(response = "Surv(ci_allo1, EFS_ind)", termlabels = predictors)
 mod_formula
 
+
+
+# CCA ---------------------------------------------------------------------
+
+
+mod_CCA <- coxph(mod_formula, data = dat)
+mod_CCA$coefficients |>  length() # 19 coefficients
+mod_CCA$coefficients
+
 # General imputation settings
 m <- 3
 iters <- 2
@@ -50,22 +57,71 @@ iters <- 2
 
 future::plan(future::sequential())
 
+
+
+# Jomo --------------------------------------------------------------------
+
+
+# Re-write this part now!!
+
 # Check workflow before continuing https://journal.r-project.org/archive/2019/RJ-2019-034/RJ-2019-034.pdf
 # https://www.ucl.ac.uk/population-health-sciences/sites/population_health_sciences/files/quartagno_1.pdf
+# https://rmisstastic.netlify.app/tutorials/erler_course_multipleimputation_2018/erler_practical_miadvanced_2018#imputation_using_jomo
+
 
 # use .MCMCchain to check convergence
+# Note jomo used all other vars in df as auxiliary ones, so exclude!!
 
-jomo_imps <- jomo.coxph(
-  formula = mod_formula,
-  data = dat,
-  nimp = 5,
-  nburn = 100,
-  nbetween = 100
+imps_burn1 <- readRDS("jomo-test-chain.rds")
+dim(imps_burn)
+jomo.coxph.MCMCchain(beta.start = , l1cov.start =
 )
+n_burn_iters <- dim(imps_burn$collectbeta)[3]
+imps_burn$collectbeta[, , n_burn_iters]
+imps_burn$collectomega[, , n_burn_iters]
 
-library(doFuture)
-doFuture::registerDoFuture()
+source("jomo-helpers.R")
+imps_burn <- readRDS("jomo-test-chain_start-vals.rds")
+
+
+obj <- assess_jomo_chain(MCMCchain_object = imps_burn,
+                         formula_subst = mod_formula,
+                         dat = dat)
+
+bayesplot::mcmc_trace(x = obj$betas_subst)
+bayesplot::mcmc_trace(x = obj$betas_norm)
+bayesplot::mcmc_pairs(x = obj$betas_norm, regex_pars = "age")
+bayesplot::mcmc_trace(
+  x = obj$covar_norm,
+  regex_pars = "karnof"
+)
+bayesplot::mcmc_areas_ridges(obj$betas_subst)
+bayesplot::mcmc_acf(x = obj$betas_subst, lags = 300)
+MCMCvis::MCMCsummary(obj$betas_subst)
+test_ggs <- ggmcmc::ggs(obj$betas_subst)
+library(ggmcmc)
+p <- ggs_running(ggs(obj$covar_norm), family = "cytog")
+ggs_traceplot(ggs(obj$covar_norm), family = "cytog")
+p + facet_wrap(~ Parameter, ncol = 4) +
+  geom_line(size = 1)
+
+ggs_traceplot(ggs(obj$covar_norm), family = "cytog") +
+  facet_wrap(~ Parameter, ncol = 4, scales = "free_y")
+
+ggs_autocorrelation(ggs(obj$covar_norm), family = "cytog") +
+  facet_wrap(~ Parameter, ncol = 4, scales = "free_y")
+
+ggs_running(ggs(obj$covar_norm), family = "karnof") +
+  facet_wrap(~ Parameter, ncol = 4, scales = "free_y") +
+  geom_line(size = 1)
+# can remove the thinning arg.. only if already thinned..
+
+
+
+# JointAI -----------------------------------------------------------------
+
 future::plan(future::sequential)
+
 
 # This thing is 5 minutes
 jointai_imps <- coxph_imp(
@@ -73,18 +129,19 @@ jointai_imps <- coxph_imp(
   n.iter = 5,
   n.adapt = 5,
   data = dat,
-  progress.bar = "gui"
+  progress.bar = "text"
 )
 
 # 10 fookin minutes!!
 jointai_imps <- coxph_imp(
   formula = mod_formula,
-  n.iter = 1,
-  n.adapt = 0,
-  data = dat,
-  progress.bar = "gui"
+  n.iter = 100,
+  n.adapt = 5,
+  data = dat#,
+ # progress.bar = "text"
 )
 
+jointai_imps$jagsmodel
 summary(jointai_imps)
 jointai_imps$comp_info$duration
 traceplot(jointai_imps, use_ggplot = TRUE)
