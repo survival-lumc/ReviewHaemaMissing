@@ -1,22 +1,19 @@
-# This will be only shared file
-
+# Libraries neede (can probably skip naniar)
 library(naniar)
 library(broom)
+library(survival)
 library(mice)
 library(smcfcs)
 library(jomo)
-library(survival)
 library(JointAI)
 library(coda)
 library(bayesplot)
+library(ggplot2)
 
 # Set contrasts for ordered factors
 options(contrasts = rep("contr.treatment", 2))
 
-set.seed(4986465)
-
-# https://academic.oup.com/aje/article/179/6/764/107562
-# https://bmcmedresmethodol.biomedcentral.com/articles/10.1186/1471-2288-10-112
+# Probably only set seed per imputation method - set.seed(...)
 
 # Change later to rds or whatever
 dat <- fst::read_fst("data-raw/dat-mds_admin-cens.fst")
