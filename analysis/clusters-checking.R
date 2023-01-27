@@ -59,10 +59,10 @@ regex_malign <- list(
   "MDS" = "([Mm]yelodysplastic [Ss]yndrome)",
   "CLL" = "([Cc]hronic [Ll]ymphocytic [Ll]euk[ae]*)",
   "CML" = "([Cc]hronic [Mm]yeloid [Ll]euk[ae]*)|([Cc]hronic [Mm]yelogenous [Ll]euk[ae]*)",
-  "ALL" = "([Aa]cute [Ll]ymphocytic [Ll]euk[ae]*)|([Aa]cute [Ll]ymphoblastic [Ll]euk[ae]*)",
+  "ALL" = "([Aa]cute [Ll]ymphocytic [Ll]euk[ae]*)|([Aa]cute [Ll]ymphoblastic [Ll]euk[ae]*)", # same as lymphobcytic!
   "MM" = "([Mm]ultiple [Mm]yeloma*)|[Mm]yeloma*",
   "AL" = "([Aa]cute leuk[ae]*)", # No clue if AML or AL
-  "APL" = "([Aa]cute [Pp]romyelocytic leuk[ae]*)",
+  "APL" = "([Aa]cute [Pp]romyelocytic leuk[ae]*)", # subtype of AML
   "leukem_other_raw" = "leuk[ae]*"
 )
 

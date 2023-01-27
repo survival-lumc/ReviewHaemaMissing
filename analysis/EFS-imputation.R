@@ -96,7 +96,7 @@ imps_smcfcs <- smcfcs(
   smformula = deparse1(mod_formula),
   m = m,
   numit = cycles,
-  rjlimit = 1000, # Edit probably
+  rjlimit = 5000, # Edit probably
   method = meths_smcfcs
 )
 
