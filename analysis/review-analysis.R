@@ -22,12 +22,18 @@ included_articles <- extraction_raw |>
 
 # Exclusions based on missings at population selection
 table(included_articles$exclusions_based_on_any_missings)
+table(included_articles$exclusions_based_on_any_missings) |>
+  prop.table()
+
 
 # Types of models - check when they happen at same time
 included_articles |>
   separate_rows(multivariable_mv_model_type, sep = "; ") |>
   group_by(multivariable_mv_model_type) |>
-  tally()
+  tally() |>
+  mutate(prop = n / nrow(included_articles))
+
+prop.table(table(included_articles$multivariable_mv_model_type))
 
 
 # Baseline covariates with missings
@@ -36,7 +42,18 @@ table(
   useNA = "ifany"
 )
 
+table(
+  included_articles$were_there_baseline_covariates_in_the_mv_model_with_missings,
+  useNA = "ifany"
+) |>  prop.table()
+
 table(included_articles$were_these_missing_explicity_reported_if_yes_where, useNA = "ifany")
+table(included_articles$implicit, included_articles$if_explicit_method_used)
+
+included_articles |>
+  separate_rows(were_these_missing_explicity_reported_if_yes_where, sep = "; ") |>
+  group_by(were_these_missing_explicity_reported_if_yes_where) |>
+  tally()
 
 # Explicit
 sum(table(included_articles$if_explicit_method_used))
@@ -54,6 +71,15 @@ included_articles |>
   separate_rows(software, sep = "; ") |>
   group_by(software) |>
   tally()
+
+included_articles |>
+  mutate(software = ifelse(is.na(software), "Unknown", software)) |>
+  separate_rows(software, sep = "; ") |>
+  group_by(software) |>
+  tally() |>
+  filter(!software %in% c("R", "SAS", "SPSS", "Stata", "Unknown")) |>
+  pull(n) |>
+  sum()
 
 included_articles |>
   mutate(software = ifelse(is.na(software), "Unknown", software)) |>

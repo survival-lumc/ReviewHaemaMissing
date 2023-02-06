@@ -67,4 +67,4 @@ corpus_to_export <- corpus |>
   select(authors, title_article, DOI, journal_name) |>
   arrange(authors, title_article)
 
-writexl::write_xlsx(corpus_to_export, path = "../review-extraction/extraction-sheet.xlsx")
+#writexl::write_xlsx(corpus_to_export, path = "../review-extraction/extraction-sheet.xlsx")
