@@ -42,6 +42,17 @@ re-exported into a cleaner format - yielding the
 The aforementioned file formed the basis for the extraction sheet
 provided with the manuscript.
 
+Two main files are of interest:
+
+- [analysis/illustrative-example.R](./analysis/illustrative-example.R) -
+  the code corresponding to the illustrative example in the manuscript
+  (comparison of imputation methods for event-free survival outcome).
+- [analysis/review-analysis.R](./analysis/review-analysis.R) - provides
+  the numbers reported in the review (requires the extraction sheet
+  uploaded with manuscript).
+
+## Overview journals included in manuscript
+
 ![](./figures/journals-overview.svg)
 
 \[List files here\]

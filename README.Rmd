@@ -33,6 +33,14 @@ Missing data are frequently encountered across studies in clinical haematology. 
 
 The [data-raw/2022-09-06_ris.ris](./data-raw/2022-09-06_ris.ris) file corresponds to the raw corpus export from the OVID platform. The .ris file was thereafter imported into [Zotero](https://www.zotero.org/), and re-exported into a cleaner format - yielding the [data-raw/literature-database-raw.csv](./data-raw/literature-database-raw.csv). The aforementioned file formed the basis for the extraction sheet provided with the manuscript. 
 
+Two main files are of interest:
+
+- [analysis/illustrative-example.R](./analysis/illustrative-example.R) - the code corresponding to the illustrative example in the manuscript (comparison of imputation methods for event-free survival outcome).
+- [analysis/review-analysis.R](./analysis/review-analysis.R) - provides the numbers reported in the review (requires the extraction sheet uploaded with manuscript).
+
+
+## Overview journals included in manuscript
+
 ![](./figures/journals-overview.svg)
 
 [List files here]

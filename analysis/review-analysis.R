@@ -9,7 +9,7 @@ library(extrafont)
 # Read-in data
 extraction_raw <- janitor::clean_names(
   read_xlsx(
-    path = "../review-extraction/extraction-sheet.xlsx",
+    path = "data-raw/extraction-sheet.xlsx",
     sheet = 1L,
     skip = 1L
   )
