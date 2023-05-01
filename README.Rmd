@@ -38,6 +38,36 @@ Two main files are of interest:
 - [analysis/illustrative-example.R](./analysis/illustrative-example.R) - the code corresponding to the illustrative example in the manuscript (comparison of imputation methods for event-free survival outcome).
 - [analysis/review-analysis.R](./analysis/review-analysis.R) - provides the numbers reported in the review (requires the extraction sheet uploaded with manuscript).
 
+```{r tree-test, comment=NA, eval=FALSE, echo=TRUE}
+.
+├── analysis
+│   ├── illustrative-example.R
+│   ├── review-analysis.R
+│   └── zotero-to-extaction-sheet.R
+├── data
+│   └── imps_all.rds
+├── data-raw
+│   ├── 2022-09-06_ris.ris
+│   ├── dat-mds_admin-cens.fst
+│   ├── data_dictionary.rda
+│   ├── extraction-sheet.xlsx
+│   └── literature-database-raw.csv
+├── figures
+│   └── journals-overview.svg
+├── hema-missing-review.Rproj
+├── R
+│   └── forest-helper.R
+├── README.md
+└── README.Rmd
+```
+
+```{r tree-example, comment=NA, eval=FALSE, echo=FALSE}
+# Or paste as test after
+#fs::dir_tree(
+#  regexp = "\\.html$|\\.Rmd$|\\.Rproj$|imgs|libs|old|css|slides", 
+#  invert = TRUE
+#)
+```
 
 ## Overview journals included in review
 

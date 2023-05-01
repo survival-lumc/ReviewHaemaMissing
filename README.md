@@ -51,6 +51,29 @@ Two main files are of interest:
   the numbers reported in the review (requires the extraction sheet
   uploaded with manuscript).
 
+``` r
+.
+├── analysis
+│   ├── illustrative-example.R
+│   ├── review-analysis.R
+│   └── zotero-to-extaction-sheet.R
+├── data
+│   └── imps_all.rds
+├── data-raw
+│   ├── 2022-09-06_ris.ris
+│   ├── dat-mds_admin-cens.fst
+│   ├── data_dictionary.rda
+│   ├── extraction-sheet.xlsx
+│   └── literature-database-raw.csv
+├── figures
+│   └── journals-overview.svg
+├── hema-missing-review.Rproj
+├── R
+│   └── forest-helper.R
+├── README.md
+└── README.Rmd
+```
+
 ## Overview journals included in review
 
 ![](./figures/journals-overview.svg)
