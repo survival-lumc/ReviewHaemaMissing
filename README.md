@@ -42,4 +42,6 @@ re-exported into a cleaner format - yielding the
 The aforementioned file formed the basis for the extraction sheet
 provided with the manuscript.
 
+![](./figures/journals-overview.svg)
+
 \[List files here\]

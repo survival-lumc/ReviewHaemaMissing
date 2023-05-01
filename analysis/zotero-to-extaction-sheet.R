@@ -15,8 +15,14 @@ corpus <- corpus_raw |>
   ) |>
   rename_with(
     ~ c(
-      "authors", "title_article", "abstract",
-      "journal_abbrev", "journal_name", "ISSN", "tags", "DOI"
+      "authors",
+      "title_article",
+      "abstract",
+      "journal_abbrev",
+      "journal_name",
+      "ISSN",
+      "tags",
+      "DOI"
     )
   ) |>
   mutate(
@@ -32,7 +38,7 @@ corpus <- corpus_raw |>
     )
   )
 
-# This is the preparation to export to extraction sheets
+# Simplify to first author et al.
 corpus_to_export <- corpus |>
   separate_rows(authors, sep = "; ", ) |>
   group_by(title_article) |>
@@ -42,4 +48,4 @@ corpus_to_export <- corpus |>
   arrange(authors, title_article)
 
 # Write to extraction sheet file:
-#writexl::write_xlsx(corpus_to_export, path = "../review-extraction/extraction-sheet.xlsx")
+#writexl::write_xlsx(corpus_to_export, path = "data-raw//extraction-sheet.xlsx")

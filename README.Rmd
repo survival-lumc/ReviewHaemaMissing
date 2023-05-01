@@ -16,10 +16,6 @@ knitr::opts_chunk$set(
   fig.retina = 2,
   fig.path = "figures/"
 )
-
-library(tidyverse)
-library(hrbrthemes)
-library(extrafont)
 ```
 
 # Handling missing covariate data in clinical studies in haematology
@@ -37,28 +33,6 @@ Missing data are frequently encountered across studies in clinical haematology. 
 
 The [data-raw/2022-09-06_ris.ris](./data-raw/2022-09-06_ris.ris) file corresponds to the raw corpus export from the OVID platform. The .ris file was thereafter imported into [Zotero](https://www.zotero.org/), and re-exported into a cleaner format - yielding the [data-raw/literature-database-raw.csv](./data-raw/literature-database-raw.csv). The aforementioned file formed the basis for the extraction sheet provided with the manuscript. 
 
-```{r journals-used, eval=FALSE}
-corpus |>
-  ggplot(aes(reorder(journal_abbrev, journal_abbrev, length))) + #fct_infreq also possible
-  geom_bar(fill = viridisLite::viridis(1)) +
-  stat_count(
-    geom = "text",
-    colour = "black",
-    family = "Roboto Condensed",
-    size = 3.5,
-    aes(
-      label = paste0(
-        "n = ", ..count..,
-        " (", round(100 * ..count../sum(..count..), 1), "%)"
-      ),
-      y = ..count.. + 0.5
-    ),
-    hjust = 0
-    #position = position_stack(vjust = 1.2)
-  ) +
-  coord_flip(ylim = c(0, 70)) +
-  labs(x = "Journal", y = "Count") +
-  theme_ipsum_rc(grid = "X", base_size = 12, axis_title_size = 14)
-```
+![](./figures/journals-overview.svg)
 
 [List files here]
