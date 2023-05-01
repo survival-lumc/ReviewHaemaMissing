@@ -1,0 +1,92 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<svg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' class='svglite' width='576.00pt' height='432.00pt' viewBox='0 0 576.00 432.00'>
+<defs>
+  <style type='text/css'><![CDATA[
+    .svglite line, .svglite polyline, .svglite polygon, .svglite path, .svglite rect, .svglite circle {
+      fill: none;
+      stroke: #000000;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      stroke-miterlimit: 10.00;
+    }
+    .svglite text {
+      white-space: pre;
+    }
+  ]]></style>
+</defs>
+<rect width='100%' height='100%' style='stroke: none; fill: none;'/>
+<defs>
+  <clipPath id='cpMC4wMHw1NzYuMDB8MC4wMHw0MzIuMDA='>
+    <rect x='0.00' y='0.00' width='576.00' height='432.00' />
+  </clipPath>
+</defs>
+<g clip-path='url(#cpMC4wMHw1NzYuMDB8MC4wMHw0MzIuMDA=)'>
+</g>
+<defs>
+  <clipPath id='cpMjI1LjE0fDU0Ni4xMXwyOS44OXwzNzIuMTA='>
+    <rect x='225.14' y='29.89' width='320.97' height='342.21' />
+  </clipPath>
+</defs>
+<g clip-path='url(#cpMjI1LjE0fDU0Ni4xMXwyOS44OXwzNzIuMTA=)'>
+<polyline points='239.73,372.10 239.73,29.89 ' style='stroke-width: 0.43; stroke: #CCCCCC; stroke-linecap: butt;' />
+<polyline points='336.99,372.10 336.99,29.89 ' style='stroke-width: 0.43; stroke: #CCCCCC; stroke-linecap: butt;' />
+<polyline points='434.26,372.10 434.26,29.89 ' style='stroke-width: 0.43; stroke: #CCCCCC; stroke-linecap: butt;' />
+<polyline points='531.52,372.10 531.52,29.89 ' style='stroke-width: 0.43; stroke: #CCCCCC; stroke-linecap: butt;' />
+<rect x='239.73' y='349.92' width='14.59' height='19.01' style='stroke-width: 1.07; stroke: none; stroke-linecap: butt; stroke-linejoin: miter; fill: #440154;' />
+<rect x='239.73' y='328.80' width='24.32' height='19.01' style='stroke-width: 1.07; stroke: none; stroke-linecap: butt; stroke-linejoin: miter; fill: #440154;' />
+<rect x='239.73' y='307.67' width='29.18' height='19.01' style='stroke-width: 1.07; stroke: none; stroke-linecap: butt; stroke-linejoin: miter; fill: #440154;' />
+<rect x='239.73' y='286.55' width='34.04' height='19.01' style='stroke-width: 1.07; stroke: none; stroke-linecap: butt; stroke-linejoin: miter; fill: #440154;' />
+<rect x='239.73' y='265.42' width='38.91' height='19.01' style='stroke-width: 1.07; stroke: none; stroke-linecap: butt; stroke-linejoin: miter; fill: #440154;' />
+<rect x='239.73' y='244.30' width='43.77' height='19.01' style='stroke-width: 1.07; stroke: none; stroke-linecap: butt; stroke-linejoin: miter; fill: #440154;' />
+<rect x='239.73' y='223.17' width='48.63' height='19.01' style='stroke-width: 1.07; stroke: none; stroke-linecap: butt; stroke-linejoin: miter; fill: #440154;' />
+<rect x='239.73' y='202.05' width='58.36' height='19.01' style='stroke-width: 1.07; stroke: none; stroke-linecap: butt; stroke-linejoin: miter; fill: #440154;' />
+<rect x='239.73' y='180.93' width='63.22' height='19.01' style='stroke-width: 1.07; stroke: none; stroke-linecap: butt; stroke-linejoin: miter; fill: #440154;' />
+<rect x='239.73' y='159.80' width='92.40' height='19.01' style='stroke-width: 1.07; stroke: none; stroke-linecap: butt; stroke-linejoin: miter; fill: #440154;' />
+<rect x='239.73' y='138.68' width='121.58' height='19.01' style='stroke-width: 1.07; stroke: none; stroke-linecap: butt; stroke-linejoin: miter; fill: #440154;' />
+<rect x='239.73' y='117.55' width='136.17' height='19.01' style='stroke-width: 1.07; stroke: none; stroke-linecap: butt; stroke-linejoin: miter; fill: #440154;' />
+<rect x='239.73' y='96.43' width='160.49' height='19.01' style='stroke-width: 1.07; stroke: none; stroke-linecap: butt; stroke-linejoin: miter; fill: #440154;' />
+<rect x='239.73' y='75.31' width='170.21' height='19.01' style='stroke-width: 1.07; stroke: none; stroke-linecap: butt; stroke-linejoin: miter; fill: #440154;' />
+<rect x='239.73' y='54.18' width='194.53' height='19.01' style='stroke-width: 1.07; stroke: none; stroke-linecap: butt; stroke-linejoin: miter; fill: #440154;' />
+<rect x='239.73' y='33.06' width='223.71' height='19.01' style='stroke-width: 1.07; stroke: none; stroke-linecap: butt; stroke-linejoin: miter; fill: #440154;' />
+<text x='256.75' y='362.97' style='font-size: 9.96px; font-family: "Roboto Condensed";' textLength='38.84px' lengthAdjust='spacingAndGlyphs'>n = 3 (1%)</text>
+<text x='266.48' y='341.84' style='font-size: 9.96px; font-family: "Roboto Condensed";' textLength='46.37px' lengthAdjust='spacingAndGlyphs'>n = 5 (1.7%)</text>
+<text x='271.34' y='320.72' style='font-size: 9.96px; font-family: "Roboto Condensed";' textLength='38.83px' lengthAdjust='spacingAndGlyphs'>n = 6 (2%)</text>
+<text x='276.20' y='299.59' style='font-size: 9.96px; font-family: "Roboto Condensed";' textLength='46.36px' lengthAdjust='spacingAndGlyphs'>n = 7 (2.3%)</text>
+<text x='281.07' y='278.47' style='font-size: 9.96px; font-family: "Roboto Condensed";' textLength='46.36px' lengthAdjust='spacingAndGlyphs'>n = 8 (2.7%)</text>
+<text x='285.93' y='257.34' style='font-size: 9.96px; font-family: "Roboto Condensed";' textLength='38.84px' lengthAdjust='spacingAndGlyphs'>n = 9 (3%)</text>
+<text x='290.79' y='236.22' style='font-size: 9.96px; font-family: "Roboto Condensed";' textLength='51.28px' lengthAdjust='spacingAndGlyphs'>n = 10 (3.3%)</text>
+<text x='300.52' y='215.10' style='font-size: 9.96px; font-family: "Roboto Condensed";' textLength='43.75px' lengthAdjust='spacingAndGlyphs'>n = 12 (4%)</text>
+<text x='305.38' y='193.97' style='font-size: 9.96px; font-family: "Roboto Condensed";' textLength='51.27px' lengthAdjust='spacingAndGlyphs'>n = 13 (4.3%)</text>
+<text x='334.56' y='172.85' style='font-size: 9.96px; font-family: "Roboto Condensed";' textLength='51.26px' lengthAdjust='spacingAndGlyphs'>n = 19 (6.4%)</text>
+<text x='363.74' y='151.72' style='font-size: 9.96px; font-family: "Roboto Condensed";' textLength='51.28px' lengthAdjust='spacingAndGlyphs'>n = 25 (8.4%)</text>
+<text x='378.33' y='130.60' style='font-size: 9.96px; font-family: "Roboto Condensed";' textLength='51.27px' lengthAdjust='spacingAndGlyphs'>n = 28 (9.4%)</text>
+<text x='402.65' y='109.47' style='font-size: 9.96px; font-family: "Roboto Condensed";' textLength='48.66px' lengthAdjust='spacingAndGlyphs'>n = 33 (11%)</text>
+<text x='412.37' y='88.35' style='font-size: 9.96px; font-family: "Roboto Condensed";' textLength='56.19px' lengthAdjust='spacingAndGlyphs'>n = 35 (11.7%)</text>
+<text x='436.69' y='67.23' style='font-size: 9.96px; font-family: "Roboto Condensed";' textLength='56.19px' lengthAdjust='spacingAndGlyphs'>n = 40 (13.4%)</text>
+<text x='465.87' y='46.10' style='font-size: 9.96px; font-family: "Roboto Condensed";' textLength='56.18px' lengthAdjust='spacingAndGlyphs'>n = 46 (15.4%)</text>
+</g>
+<g clip-path='url(#cpMC4wMHw1NzYuMDB8MC4wMHw0MzIuMDA=)'>
+<text x='222.15' y='363.69' text-anchor='end' style='font-size: 12.00px;fill: #4D4D4D; font-family: "Roboto Condensed";' textLength='176.34px' lengthAdjust='spacingAndGlyphs'>Therapeutic Advances in Hematology</text>
+<text x='222.15' y='342.57' text-anchor='end' style='font-size: 12.00px;fill: #4D4D4D; font-family: "Roboto Condensed";' textLength='175.27px' lengthAdjust='spacingAndGlyphs'>Journal of Hematology and Oncology</text>
+<text x='222.15' y='321.44' text-anchor='end' style='font-size: 12.00px;fill: #4D4D4D; font-family: "Roboto Condensed";' textLength='128.45px' lengthAdjust='spacingAndGlyphs'>Pediatric Blood and Cancer</text>
+<text x='222.15' y='300.32' text-anchor='end' style='font-size: 12.00px;fill: #4D4D4D; font-family: "Roboto Condensed";' textLength='115.91px' lengthAdjust='spacingAndGlyphs'>Hematological Oncology</text>
+<text x='222.15' y='279.20' text-anchor='end' style='font-size: 12.00px;fill: #4D4D4D; font-family: "Roboto Condensed";' textLength='117.98px' lengthAdjust='spacingAndGlyphs'>The Lancet Haematology</text>
+<text x='222.15' y='258.07' text-anchor='end' style='font-size: 12.00px;fill: #4D4D4D; font-family: "Roboto Condensed";' textLength='71.90px' lengthAdjust='spacingAndGlyphs'>Haematologica</text>
+<text x='222.15' y='236.95' text-anchor='end' style='font-size: 12.00px;fill: #4D4D4D; font-family: "Roboto Condensed";' textLength='101.55px' lengthAdjust='spacingAndGlyphs'>Blood Cancer Journal</text>
+<text x='222.15' y='215.82' text-anchor='end' style='font-size: 12.00px;fill: #4D4D4D; font-family: "Roboto Condensed";' textLength='155.81px' lengthAdjust='spacingAndGlyphs'>American Journal of Hematology</text>
+<text x='222.15' y='194.70' text-anchor='end' style='font-size: 12.00px;fill: #4D4D4D; font-family: "Roboto Condensed";' textLength='27.29px' lengthAdjust='spacingAndGlyphs'>Blood</text>
+<text x='222.15' y='173.57' text-anchor='end' style='font-size: 12.00px;fill: #4D4D4D; font-family: "Roboto Condensed";' textLength='45.69px' lengthAdjust='spacingAndGlyphs'>Leukemia</text>
+<text x='222.15' y='152.45' text-anchor='end' style='font-size: 12.00px;fill: #4D4D4D; font-family: "Roboto Condensed";' textLength='147.00px' lengthAdjust='spacingAndGlyphs'>British Journal of Haematology</text>
+<text x='222.15' y='131.33' text-anchor='end' style='font-size: 12.00px;fill: #4D4D4D; font-family: "Roboto Condensed";' textLength='120.94px' lengthAdjust='spacingAndGlyphs'>Leukemia and Lymphoma</text>
+<text x='222.15' y='110.20' text-anchor='end' style='font-size: 12.00px;fill: #4D4D4D; font-family: "Roboto Condensed";' textLength='104.90px' lengthAdjust='spacingAndGlyphs'>Annals of Hematology</text>
+<text x='222.15' y='89.08' text-anchor='end' style='font-size: 12.00px;fill: #4D4D4D; font-family: "Roboto Condensed";' textLength='76.23px' lengthAdjust='spacingAndGlyphs'>Blood Advances</text>
+<text x='222.15' y='67.95' text-anchor='end' style='font-size: 12.00px;fill: #4D4D4D; font-family: "Roboto Condensed";' textLength='174.17px' lengthAdjust='spacingAndGlyphs'>Transplantation and Cellular Therapy</text>
+<text x='222.15' y='46.83' text-anchor='end' style='font-size: 12.00px;fill: #4D4D4D; font-family: "Roboto Condensed";' textLength='139.98px' lengthAdjust='spacingAndGlyphs'>Bone Marrow Transplantation</text>
+<text x='239.73' y='383.62' text-anchor='middle' style='font-size: 12.00px;fill: #4D4D4D; font-family: "Roboto Condensed";' textLength='5.93px' lengthAdjust='spacingAndGlyphs'>0</text>
+<text x='336.99' y='383.62' text-anchor='middle' style='font-size: 12.00px;fill: #4D4D4D; font-family: "Roboto Condensed";' textLength='11.84px' lengthAdjust='spacingAndGlyphs'>20</text>
+<text x='434.26' y='383.62' text-anchor='middle' style='font-size: 12.00px;fill: #4D4D4D; font-family: "Roboto Condensed";' textLength='11.84px' lengthAdjust='spacingAndGlyphs'>40</text>
+<text x='531.52' y='383.62' text-anchor='middle' style='font-size: 12.00px;fill: #4D4D4D; font-family: "Roboto Condensed";' textLength='11.84px' lengthAdjust='spacingAndGlyphs'>60</text>
+<text x='546.11' y='399.12' text-anchor='end' style='font-size: 14.00px; font-family: "Roboto Condensed";' textLength='32.64px' lengthAdjust='spacingAndGlyphs'>Count</text>
+<text transform='translate(39.84,29.89) rotate(-90)' text-anchor='end' style='font-size: 14.00px; font-family: "Roboto Condensed";' textLength='41.49px' lengthAdjust='spacingAndGlyphs'>Journal</text>
+</g>
+</svg>
