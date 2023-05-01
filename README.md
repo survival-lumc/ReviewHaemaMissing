@@ -51,8 +51,6 @@ Two main files are of interest:
   the numbers reported in the review (requires the extraction sheet
   uploaded with manuscript).
 
-## Overview journals included in manuscript
+## Overview journals included in review
 
 ![](./figures/journals-overview.svg)
-
-\[List files here\]
