@@ -37,55 +37,20 @@ Missing data are frequently encountered across studies in clinical haematology. 
 
 The [data-raw/2022-09-06_ris.ris](./data-raw/2022-09-06_ris.ris) file corresponds to the raw corpus export from the OVID platform. The .ris file was thereafter imported into [Zotero](https://www.zotero.org/), and re-exported into a cleaner format - yielding the [data-raw/literature-database-raw.csv](./data-raw/literature-database-raw.csv). The aforementioned file formed the basis for the extraction sheet provided with the manuscript. 
 
-```{r journals-used}
-# Read-in raw corpus
-corpus_raw <- read_csv("data-raw/literature-database-raw.csv")
-
-# Re-format
-corpus <- corpus_raw |>
-  select(
-    Author,
-    Title,
-    `Abstract Note`,
-    `Journal Abbreviation`,
-    `Publication Title`,
-    ISSN,
-    `Manual Tags`,
-    DOI
-  ) |>
-  rename_with(
-    ~ c(
-      "authors", "title_article", "abstract",
-      "journal_abbrev", "journal_name", "ISSN", "tags", "DOI"
-    )
-  ) |>
-  mutate(
-    journal_abbrev = ifelse(
-      journal_abbrev == "Transplant Cell Ther",
-      "Transplant. Cell. Ther",
-      journal_abbrev
-    ),
-    journal_name = ifelse(
-      journal_name  == "Transplantation and cellular therapy",
-      "Transplantation and Cellular Therapy",
-      journal_name
-    )
-  )
-
-# Make plot
+```{r journals-used, eval=FALSE}
 corpus |>
   ggplot(aes(reorder(journal_abbrev, journal_abbrev, length))) + #fct_infreq also possible
   geom_bar(fill = viridisLite::viridis(1)) +
   stat_count(
-    geom = "text", 
-    colour = "black", 
+    geom = "text",
+    colour = "black",
     family = "Roboto Condensed",
     size = 3.5,
     aes(
       label = paste0(
         "n = ", ..count..,
         " (", round(100 * ..count../sum(..count..), 1), "%)"
-      ), 
+      ),
       y = ..count.. + 0.5
     ),
     hjust = 0
@@ -94,17 +59,6 @@ corpus |>
   coord_flip(ylim = c(0, 70)) +
   labs(x = "Journal", y = "Count") +
   theme_ipsum_rc(grid = "X", base_size = 12, axis_title_size = 14)
-
-# This was the preparation to export to extraction sheets
-corpus_to_export <- corpus |>
-  separate_rows(authors, sep = "; ", ) |>
-  group_by(title_article) |>
-  slice(1L) |>
-  mutate(authors = paste0(authors, " et al.")) |>
-  select(authors, title_article, DOI, journal_name) |>
-  arrange(authors, title_article)
-
-#writexl::write_xlsx(corpus_to_export, path = "../review-extraction/extraction-sheet.xlsx")
 ```
 
 [List files here]
