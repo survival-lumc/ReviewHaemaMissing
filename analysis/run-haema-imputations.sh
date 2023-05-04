@@ -1,9 +1,9 @@
 #!/bin/bash
 #SBATCH -J haema-imps
 #SBATCH --nodes=1
-#SBATCH --ntasks-per-node=5
+#SBATCH --ntasks-per-node=4
 #SBATCH --partition=all
-#SBATCH --time=0-02:00:00
+#SBATCH --time=0-23:00:00
 #SBATCH --mem-per-cpu=10G
 
 

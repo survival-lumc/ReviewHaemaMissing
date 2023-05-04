@@ -65,8 +65,8 @@ summ_missind <- summ_missind_raw[grep(summ_missind_raw$term, pattern = "(Missing
 
 
 # General settings
-m <- 10 #100L
-cycles <- 50L
+m <- 100L
+cycles <- 15L
 
 # -- MICE
 
@@ -89,7 +89,7 @@ imps_mice <- parlmice(
   data = dat,
   predictorMatrix = predmat,
   method = meths_mice,
-  seed = 97868
+  cluster.seed = 97868
 )
 
 # -- SMC-FCS
@@ -118,11 +118,11 @@ set.seed(3002764)
 # Set plan to multisession if on windows..
 plan(multicore, workers = num_cores)
 
-mod <- coxph_imp(
+imps_jointai <- coxph_imp(
   mod_formula,
   n.chains = 4L,
   data = dat,
-  n.iter = 200L, #2000L,
+  n.iter = 2000L,
   n.adapt = 200L,
   monitor_params = list(analysis_main = TRUE, alphas = TRUE)
 )
@@ -132,12 +132,10 @@ mod <- coxph_imp(
 imps_all <- list(
   "mice_obj" = imps_mice,
   "smcfcs_obj" = imps_smcfcs,
-  "jointai_obj" = mod
+  "jointai_obj" = imps_jointai
 )
 
-saveRDS(imps_all, file = "data/imps_all.rds")
-
-stop()
+saveRDS(imps_all, file = "./data/imps_all.rds")
 
 
 # Complete-case analysis --------------------------------------------------
@@ -164,10 +162,10 @@ EFS_smcfcs_models <- lapply(
 )
 
 # JointAI convergence good!
-traceplot(
-  imps_all$jointai_obj,
-  subset = c(analysis_main = FALSE, other_models = TRUE)
-)
+#traceplot(
+#  imps_all$jointai_obj,
+#  subset = c(analysis_main = FALSE, other_models = TRUE)
+#)
 
 
 # Summarise results -------------------------------------------------------
@@ -184,8 +182,8 @@ tidy_jointai <- cbind.data.frame(
   #"method" = "JointAI"
 )
 
-load("data-raw/data_dictionary.rda")
-source("R/forest-helper.R")
+load("./data-raw/data_dictionary.rda")
+source("./R/forest-helper.R")
 
 results_raw <- list(
   "JointAI" = tidy_jointai,
