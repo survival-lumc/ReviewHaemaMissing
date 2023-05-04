@@ -15,7 +15,7 @@ library(broom)
 options(contrasts = rep("contr.treatment", 2))
 
 # Detect number of available cores for the analysis
-num_cores <- 1L #future::availableCores(logical = FALSE)
+num_cores <- parallelly::availableCores(logical = FALSE)
 
 
 # Read-in data ------------------------------------------------------------
@@ -65,8 +65,8 @@ summ_missind <- summ_missind_raw[grep(summ_missind_raw$term, pattern = "(Missing
 
 
 # General settings
-m <- 100L
-cycles <- 15L
+m <- 10 #100L
+cycles <- 50L
 
 # -- MICE
 
@@ -103,7 +103,7 @@ imps_smcfcs <- smcfcs.parallel(
   m = m,
   numit = cycles,
   n_cores = num_cores,
-  rjlimit = 5000L,
+  rjlimit = 10000L,
   method = meths_smcfcs,
   seed = 45684
 )
@@ -122,7 +122,7 @@ mod <- coxph_imp(
   mod_formula,
   n.chains = 4L,
   data = dat,
-  n.iter = 2000L,
+  n.iter = 200L, #2000L,
   n.adapt = 200L,
   monitor_params = list(analysis_main = TRUE, alphas = TRUE)
 )
@@ -135,7 +135,9 @@ imps_all <- list(
   "jointai_obj" = mod
 )
 
-#saveRDS(imps_all, file = "data/imps_all.rds")
+saveRDS(imps_all, file = "data/imps_all.rds")
+
+stop()
 
 
 # Complete-case analysis --------------------------------------------------
@@ -148,7 +150,7 @@ mod_CCA <- coxph(mod_formula, data = dat)
 
 
 # Load saved objects
-imps_all <- readRDS("data/imps_all_2.rds")
+#imps_all <- readRDS("data/imps_all_2.rds")
 
 # Fit models in imputed datasets (FIX: mice only 20 impdats!!)
 EFS_mice_models <- lapply(
@@ -195,7 +197,7 @@ results_raw <- list(
 
 results <- lapply(results_raw, function(summ) {
   summ$`2.5 %` <- summ$conf.low;
-  summ$`97.5 %` <- summ$conf.high
+  summ$`97.5 %` <- summ$conf.high;
   summ
 })
 
@@ -213,14 +215,14 @@ p <- ggplot_grouped_forest(
   )
 
 ggplot2::ggsave(
-  filename = "./forest_EFS.pdf",
+  filename = "./figures/forest_EFS.pdf",
   plot = p,
   width = 10,
   height = 13, dpi = 300
 )
 
 ggplot2::ggsave(
-  filename = "./forest_EFS.png",
+  filename = "./figures/forest_EFS.png",
   plot = p,
   width = 10,
   height = 13, dpi = 300
