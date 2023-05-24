@@ -7,7 +7,7 @@ ggplot_grouped_forest <- function(dat,
                                   lims_x = c(0.65, 4.5)) {
 
   # Prepare plot df
-  df_plot <- CauseSpecCovarMI:::prepare_forest_df(
+  df_plot <- prepare_forest_df(
     dat = dat,
     dictionary = dictionary,
     form = form,
@@ -124,4 +124,100 @@ ggplot_grouped_forest <- function(dat,
     ggplot2::theme(legend.position = "top", plot.margin = ggplot2::margin(0, 0, 0, 2))
 
   return(forest_plot)
+}
+
+
+prepare_forest_df <- function(dat,
+                              dictionary,
+                              form,
+                              results) {
+
+  # For checks
+  . <- colour_row <- graph_x <- level_num <- NULL
+  var_label <- var_name <- levels_lab <- term <- method  <- NULL
+
+  # Combine list of regression results - add also NA row with reference categories
+  res <- data.table::rbindlist(
+    lapply(X = results, FUN = function(mod_summary) {
+      reflevels_add_summary(summ = mod_summary, dat = dat, form = form)
+    }),
+    fill = TRUE,
+    idcol = "method"
+  )
+
+  res[, method := factor(method, levels = names(results))]
+
+  # Get predictors from RHS
+  patt <- paste0("(", paste(unique(dictionary$var_name), collapse = "|"), ")")
+
+  # Set var_name and levels according to data dict?
+  # Possibly along with eventual function create_data_dictionary()
+  res[, ':=' (
+    var_name = regmatches(x = term, m = regexpr(pattern = patt, text = term)),
+    levels = gsub(pattern = patt, replacement = "", x = term)
+  )]
+
+  res[levels == "", levels := NA_character_]
+  df_merged <- merge(res, dictionary, by = c("var_name", "levels"))
+
+  # Add rows for variable names of factors (once for each method)
+  new_rows <- df_merged[!is.na(levels_lab), list(
+    var_name = unique(var_name)
+  ), by = list(var_label, method)]
+
+  df_merged_expanded <- rbind(df_merged, new_rows, fill = TRUE)
+  df_merged_expanded[is.na(level_num), level_num := 0]
+
+  # Prepare the left most column of forest table, use tabs for levels
+  df_merged_expanded[, levels_lab := ifelse(
+    is.na(levels_lab),
+    var_label,
+    paste0("    ", levels_lab)
+  )]
+
+  # Sort a) alphabetic var labels, then by levels order, then method
+  data.table::setorder(df_merged_expanded, var_label, level_num, method)
+
+  # Unique() will take order they were sorted in
+  df_merged_expanded[, levels_lab := factor(levels_lab, levels = unique(levels_lab))]
+
+  # Prepare the alternating grey/white rows
+  df_merged_expanded[, graph_x := as.numeric(levels_lab)]
+  df_merged_expanded[order(levels_lab), colour_row := rep(
+    x = c("white", "gray"), length.out = .N
+  ), by = .(method)]
+
+  return(df_merged_expanded)
+}
+
+#' Utility to add reference factor levels to add model summary
+#'
+#' (Not for use beyond this repository)
+#'
+#' @param summ Model summary (possibly custom made)
+#' @param dat Original dataset used to run the model
+#' @param form Formula from the run model
+#' @param term_col Column referencing coefficient names in summ
+#'
+#' @noRd
+reflevels_add_summary <- function(summ, dat, form, term_col = "term") {
+
+  variable <- coef <- NULL
+
+  # Get predictors
+  preds <- attr(stats::terms(form), "term.labels")
+
+  # Identify factors
+  ref_levels <- dat[, lapply(.SD, function(col) levels(col)[1]), .SDcols = is.factor] %>%
+    data.table::transpose(keep.names = "variable") %>%
+    data.table::setnames(old = "V1", new = "coef")
+
+  ref_levels[, "term" := paste0(variable, coef)]
+  ref_levels[, setdiff(names(ref_levels), "term") := NULL]
+
+  # Make sure term column in summary is called "term"
+  new_summary <- data.table::data.table(summ)
+  data.table::setnames(new_summary, old = term_col, new = "term")
+
+  return(rbind(new_summary, ref_levels, fill = TRUE))
 }

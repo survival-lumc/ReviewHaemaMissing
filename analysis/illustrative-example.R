@@ -148,7 +148,7 @@ mod_CCA <- coxph(mod_formula, data = dat)
 
 
 # Load saved objects
-#imps_all <- readRDS("data/imps_all_2.rds")
+#imps_all <- readRDS("data/imps_all.rds")
 
 # Fit models in imputed datasets (FIX: mice only 20 impdats!!)
 EFS_mice_models <- lapply(

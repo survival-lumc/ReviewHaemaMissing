@@ -4,6 +4,8 @@
 # Handling missing covariate data in clinical studies in haematology
 
 <!-- badges: start -->
+
+[![DOI:10.1016/j.beha.2023.101477](https://zenodo.org/badge/DOI/10.1016/j.beha.2023.101477.svg)](https://doi.org/10.1016/j.beha.2023.101477)
 <!-- badges: end -->
 
 **Authors**: Edouard F. Bonneville, Johannes Schetelig, Hein Putter, and
@@ -19,7 +21,7 @@ we first provide an overview of current methods for handling missing
 covariate data, along with their advantages and disadvantages.
 Furthermore, a systematic review is presented, exploring both
 contemporary reporting of missing values in major haematological
-journals, and the methods used for handling them. A principle finding
+journals, and the methods used for handling them. A principal finding
 was that the method of handling missing data was explicitly specified in
 a minority of articles (in 76 out of 195 articles reporting missing
 values, 39%). Among these, complete case analysis and the missing
