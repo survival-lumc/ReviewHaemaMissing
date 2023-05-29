@@ -1,3 +1,12 @@
+# Handling missing covariate data in clinical studies in haematology (2023)
+# E. F. Bonneville et al.
+
+# Code for illustrative example (section 5)
+
+
+# Packages and general settings -------------------------------------------
+
+
 # Packages needed:
 library(survival) # For fitting Cox models in each imputed dataset
 library(mice) # MICE approach
